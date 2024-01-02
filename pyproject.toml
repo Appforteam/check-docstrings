@@ -12,4 +12,4 @@ authors = ["Ali Hashemi"]
 python = "^3.8"
 
 [tool.poetry.scripts]
-check-docstrings = "check_docstrings:main"
+check-docstrings = "check_docstrings.main:main"
