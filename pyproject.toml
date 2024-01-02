@@ -6,6 +6,7 @@ build-backend = "poetry.core.masonry.api"
 name = "check-docstrings"
 version = "0.1.0"
 description = "A pre-commit hook to check for missing docstrings in Python methods."
+authors = ["Ali Hashemi"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
