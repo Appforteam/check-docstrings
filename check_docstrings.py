@@ -1,9 +1,9 @@
 """Pre-commit hook to check if there is a method longer than length threshold without docstring."""
+import argparse
 import ast
 import sys
 
 METHOD_LENGTH_THRESHOLD = 6  # lines
-
 has_error = False
 
 
@@ -42,6 +42,14 @@ def check_file(filename):
         sys.exit(0)
 
 
+def parse_arguments():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--length", type=int, default=6, help="Method length threshold")
+    return parser.parse_known_args()
+
+
 if __name__ == "__main__":
-    for filename in sys.argv[1:]:
+    args, filenames = parse_arguments()
+    METHOD_LENGTH_THRESHOLD = args.length
+    for filename in filenames:
         check_file(filename)
