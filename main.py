@@ -48,8 +48,13 @@ def parse_arguments():
     return parser.parse_known_args()
 
 
-if __name__ == "__main__":
+def main():
+    global METHOD_LENGTH_THRESHOLD
     args, filenames = parse_arguments()
     METHOD_LENGTH_THRESHOLD = args.length
     for filename in filenames:
         check_file(filename)
+
+if __name__ == "__main__":
+    main()
+

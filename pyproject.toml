@@ -1,2 +1,14 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "check-docstrings"
+version = "0.1.0"
+description = "A pre-commit hook to check for missing docstrings in Python methods."
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.scripts]
+check-docstrings = "check_docstrings:main"
