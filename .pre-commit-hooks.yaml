@@ -2,6 +2,6 @@
     name: Check docstrings
     description: This hook checks if methods longer than a certain length have docstrings.
     entry: python check_docstrings.py
-    language: script
+    language: python
     language_version: python3
     types: [python]
