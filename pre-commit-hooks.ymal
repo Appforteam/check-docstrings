@@ -1,0 +1,6 @@
+- id: check-docstrings
+    name: Check docstrings
+    description: This hook checks if methods longer than a certain length have docstrings.
+    entry: python check_docstrings.py
+    language: python
+    types: [python]
