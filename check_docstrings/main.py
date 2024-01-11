@@ -13,7 +13,9 @@ def check_file(filename):
         source = f.read()
     module = ast.parse(source, filename)
     for node in ast.walk(module):
-        if isinstance(node, ast.AsyncFunctionDef) or isinstance(node, ast.FunctionDef):
+        if (
+            isinstance(node, ast.AsyncFunctionDef) or isinstance(node, ast.FunctionDef)
+        ) and not node.name.startswith("_"):
             # Skip methods that have a docstring
             if ast.get_docstring(node):
                 continue
@@ -55,6 +57,6 @@ def main():
     for filename in filenames:
         check_file(filename)
 
+
 if __name__ == "__main__":
     main()
-
