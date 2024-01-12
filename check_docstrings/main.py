@@ -29,7 +29,7 @@ def check_file(filename):
             # Check with pydocstyle for methods over specified length
             if len(code_lines) > METHOD_LENGTH_THRESHOLD:
                 # Print log with link to line of code
-                print_missing_docstring(filename, node)
+                print_missing_docstring(filename, node.lineno)
                 has_error = True
                 continue
             #If func is less than threshold Save name and line number
@@ -74,15 +74,13 @@ def print_error_if_func_call_is_an_endpoint(filename, node: ast.Call, possible_f
             if isinstance(node.args[0], ast.Attribute):
                 function_name = node.args[0].attr
                 if function_name in possible_func_call_api:
-                    
-                    print(f"{filename}:{possible_func_call_api[function_name]} missing docstring.")
-                    # print_missing_docstring(filename, node)
+                    print_missing_docstring(filename, possible_func_call_api[function_name])
 
 
             
-def print_missing_docstring(filename, node):
+def print_missing_docstring(filename, line):
     global has_error
-    print(f"{filename}:{node.lineno} missing docstring.")
+    print(f"{filename}:{line} missing docstring.")
     has_error = True
 
 def parse_arguments():
