@@ -8,6 +8,7 @@ has_error = False
 possible_func_call_api = {}
 
 
+
 def check_file(filename):
     global has_error
     with open(filename, "r") as f:
@@ -23,7 +24,7 @@ def check_file(filename):
                 continue
             # Api endpoints should have docstrings
             if is_func_an_endpoint(node):
-                print_missing_docstring(filename, node)
+                print_missing_docstring(filename, node.lineno)
                 continue
             code_lines = count_code_lines(source, node)
             # Check with pydocstyle for methods over specified length
